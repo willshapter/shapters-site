@@ -1,12 +1,30 @@
 export function ShippingBanner() {
+  const images = [
+    "LINK_DA_SUA_PRIMEIRA_IMAGEM",
+    "LINK_DA_SUA_SEGUNDA_IMAGEM",
+    "LINK_DA_SUA_TERCEIRA_IMAGEM"
+  ];
+
   return (
-    <section className="w-full bg-[#0e4d4d]" aria-label="Promoção de frete grátis">
-      {/* SUBSTITUA ESTE LINK PELA SUA IMAGEM DE FRETE GRÁTIS DEPOIS */}
-      <img
-        src="https://cdn.shopify.com/s/files/1/0781/7573/1852/files/aurora-top-banner1.jpg?v=1784478813"
-        style={{ width: "100%", maxHeight: "400px", objectFit: "cover" }}
-        alt="Banner Frete Grátis"
-      />
+    <section className="w-full h-[400px] overflow-hidden relative">
+      {images.map((src, index) => (
+        <img
+          key={index}
+          src={src}
+          alt={`Banner ${index + 1}`}
+          className="absolute w-full h-full object-cover animate-fade-slides"
+          style={{ animationDelay: `${index * 5}s` }}
+        />
+      ))}
+      <style jsx>{`
+        @keyframes fade-slides {
+          0%, 20% { opacity: 1; }
+          33%, 100% { opacity: 0; }
+        }
+        .animate-fade-slides {
+          animation: fade-slides 15s infinite;
+        }
+      `}</style>
     </section>
-  )
+  );
 }
