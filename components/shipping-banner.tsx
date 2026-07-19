@@ -3,7 +3,7 @@ export function ShippingBanner() {
     <section className="w-full bg-[#0e4d4d]" aria-label="Promoção de frete grátis">
       {/* SUBSTITUA ESTE LINK PELA SUA IMAGEM DE FRETE GRÁTIS DEPOIS */}
       <img
-        src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=2070"
+        src="https://cdn.shopify.com/s/files/1/0781/7573/1852/files/aurora-top-banner1.jpg?v=1784478813"
         style={{ width: "100%", maxHeight: "400px", objectFit: "cover" }}
         alt="Banner Frete Grátis"
       />
