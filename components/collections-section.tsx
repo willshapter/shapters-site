@@ -11,7 +11,7 @@ export function CollectionsSection() {
   const [scrollLeft, setScrollLeft] = useState(0);
 
   const categories = [
-    { name: "Sala De Jantar", image: "https://images.unsplash.com/photo-1617806118233-18e1c0c27942?w=300&q=80", href: "/category/sala-de-jantar" },
+    { name: "Sala De Jantar", image: "http://googleusercontent.com/image_generation_content/473", href: "/category/sala-de-jantar" },
     { name: "Presentes Para Ele", image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=300&q=80", href: "/category/presentes-para-ele" },
     { name: "Presentes Para Ela", image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=300&q=80", href: "/category/presentes-para-ela" },
     { name: "Roupas Femininas", image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=300&q=80", href: "/category/roupas-femininas" },
