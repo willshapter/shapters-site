@@ -9,7 +9,13 @@ export default function Page() {
     <main className="min-h-screen bg-white">
       <SiteHeader />
       <ShippingBanner />
-      <CollectionsSection />
+      
+      {/* Adicionamos pt-20 para dar espaço para o banner e o header flutuante */}
+      <div className="pt-20">
+        <CollectionsSection />
+        {/* O resto da sua home page viria aqui */}
+      </div>
+
       <FloatingSidebar />
       <SiteFooter />
     </main>
