@@ -10,13 +10,12 @@ export function FloatingSidebar() {
 
   return (
     <>
-      {/* Zona invisível e indicador visual (setinha) na borda esquerda */}
+      {/* Zona e setinha indicativa */}
       <div
         aria-hidden="true"
         onMouseEnter={() => setOpen(true)}
-        className="fixed left-0 top-1/2 z-30 hidden -translate-y-1/2 sm:flex items-center pointer-events-auto"
+        className="fixed left-0 top-1/2 z-30 flex -translate-y-1/2 items-center pointer-events-auto"
       >
-        {/* Setinha chamativa que some quando o menu abre */}
         <div
           className={[
             "flex h-10 w-6 items-center justify-center rounded-r-md bg-white/90 shadow-md ring-1 ring-gray-200 backdrop-blur transition-opacity duration-300",
@@ -34,7 +33,6 @@ export function FloatingSidebar() {
         onMouseLeave={() => setOpen(false)}
         className={[
           "fixed left-0 top-1/2 z-40 -translate-y-1/2",
-          "hidden sm:block",
           "transition-all duration-300 ease-out",
           open
             ? "pointer-events-auto translate-x-0 opacity-100"
