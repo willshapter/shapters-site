@@ -1,4 +1,4 @@
-"import client";
+"use client";
 
 import { useEffect, useState } from "react"
 import { collections } from "@/lib/collections"
@@ -10,30 +10,21 @@ export function FloatingSidebar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Ajuste este valor se quiser que apareça mais cedo ou mais tarde na rolagem
-      const collectionsSection = document.getElementById("collections-section")
-      const scrollPosition = window.scrollY
-
-      if (collectionsSection) {
-        const sectionTop = collectionsSection.offsetTop + collectionsSection.offsetHeight
-        setIsVisible(scrollPosition > sectionTop - 150)
-      } else {
-        setIsVisible(scrollPosition > 400)
-      }
+      setIsVisible(window.scrollY > 300)
     }
 
     window.addEventListener("scroll", handleScroll)
+    handleScroll() 
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   if (!isVisible) return null
 
   return (
-    <div className="fixed left-0 top-1/2 z-40 -translate-y-1/2 flex items-center transition-all duration-300">
-      {/* O Menu Lateral */}
+    <div className="fixed left-0 top-24 z-50 flex items-center transition-all duration-300">
       <aside
         aria-label="Categorias"
-        className={`flex max-h-[85vh] w-28 flex-col gap-3 overflow-y-auto rounded-r-xl bg-white/95 px-3 py-4 shadow-2xl ring-1 ring-gray-200 backdrop-blur transition-all duration-300 ${
+        className={`flex max-h-[70vh] w-28 flex-col gap-3 overflow-y-auto rounded-r-xl bg-white px-3 py-4 shadow-xl border border-gray-100 transition-all duration-300 ${
           isOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0 pointer-events-none absolute"
         }`}
       >
@@ -58,7 +49,6 @@ export function FloatingSidebar() {
         ))}
       </aside>
 
-      {/* Botão com a Setinha para Abrir/Fechar */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex h-12 w-7 items-center justify-center rounded-r-lg bg-[#eb2f4e] text-white shadow-md transition-all hover:bg-[#d02441] focus:outline-none"
