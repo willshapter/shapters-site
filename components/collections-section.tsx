@@ -3,13 +3,16 @@
 import Link from "next/link"
 
 export function CollectionsSection() {
-  // Aqui estão as categorias atuais. Depois você me diz quais quer alterar!
+  // Lista com as 8 categorias completas e corrigidas
   const categories = [
     { name: "Sala De Jantar", image: "https://images.unsplash.com/photo-1617806118233-18e1c0c27942?auto=format&fit=crop&w=300&q=80", href: "/category/sala-de-jantar" },
     { name: "Presentes Para Ele", image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=300&q=80", href: "/category/presentes-para-ele" },
     { name: "Presentes Para Ela", image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=300&q=80", href: "/category/presentes-para-ela" },
     { name: "Roupas Femininas", image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=300&q=80", href: "/category/roupas-femininas" },
-    // Adicione mais se precisar
+    { name: "Decoração", image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=300&q=80", href: "/category/decoracao" },
+    { name: "Eletrônicos", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=300&q=80", href: "/category/eletronicos" },
+    { name: "Acessórios", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=300&q=80", href: "/category/acessorios" },
+    { name: "Calçados", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=300&q=80", href: "/category/calcados" },
   ];
 
   return (
@@ -18,15 +21,15 @@ export function CollectionsSection() {
         Compre produtos e presentes criativos no Shapters Marketplace!
       </h2>
 
-      {/* Container com scroll horizontal no mobile/tablet e centralizado no desktop */}
-      <div className="flex md:justify-center items-center gap-6 overflow-x-auto no-scrollbar pb-4 px-2">
+      {/* No celular vira scroll horizontal. No computador (md) organiza em linha ou grade que se ajusta automaticamente */}
+      <div className="flex md:flex-wrap md:justify-center items-center gap-6 overflow-x-auto md:overflow-x-visible no-scrollbar pb-4 px-2">
         {categories.map((cat, index) => (
           <Link 
             key={index} 
             href={cat.href}
             className="flex flex-col items-center flex-shrink-0 group text-center w-28"
           >
-            <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-2 border-transparent group-hover:border-rose-500 transition-all shadow-sm">
+            <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-2 border-transparent group-hover:border-rose-500 transition-all shadow-sm bg-gray-100">
               <img 
                 src={cat.image} 
                 alt={cat.name} 
