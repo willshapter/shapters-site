@@ -1,3 +1,16 @@
+import { FloatingSidebar } from "@/components/floating-sidebar"
+// ... outros imports que você já tem no arquivo (como site-header, etc.)
+
+export default function Home() {
+  return (
+    <main className="min-h-screen bg-white">
+      {/* Coloque o menu flutuante aqui dentro da página */}
+      <FloatingSidebar />
+
+      {/* O resto do seu código atual (header, banners, seções, footer...) */}
+    </main>
+  )
+}
 import { SiteHeader } from "@/components/site-header"
 import { ShippingBanner } from "@/components/shipping-banner"
 import { CollectionsSection } from "@/components/collections-section"
