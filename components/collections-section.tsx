@@ -16,7 +16,7 @@ export function CollectionsSection() {
     { name: "Presentes Para Ela", image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=300&q=80", href: "/category/presentes-para-ela" },
     { name: "Roupas Femininas", image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=300&q=80", href: "/category/roupas-femininas" },
     { name: "Decoração", image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=300&q=80", href: "/category/decoracao" },
-    { name: "Eletrônicos", image: "http://googleusercontent.com/image_generation_content/377", href: "/category/eletronicos" },
+    { name: "Eletrônicos", image: "http://googleusercontent.com/image_generation_content/419", href: "/category/eletronicos" },
     { name: "Acessórios", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&q=80", href: "/category/acessorios" },
     { name: "Calçados", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&q=80", href: "/category/calcados" },
   ];
