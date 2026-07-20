@@ -1,13 +1,23 @@
+import { SiteHeader } from "@/components/site-header"
+import { ShippingBanner } from "@/components/shipping-banner"
+import { CollectionsSection } from "@/components/collections-section"
 import { FloatingSidebar } from "@/components/floating-sidebar"
-// ... outros imports que você já tem no arquivo (como site-header, etc.)
+import { SiteFooter } from "@/components/site-footer"
 
-export default function Home() {
+export default function Page() {
   return (
     <main className="min-h-screen bg-white">
-      {/* Coloque o menu flutuante aqui dentro da página */}
-      <FloatingSidebar />
+      <SiteHeader />
+      <ShippingBanner />
+      <CollectionsSection />
+      
+      {/* TESTE VISUAL: Colocado aqui no meio do texto, sem fixed, para forçar aparecer */}
+      <div className="bg-red-100 p-6 border-4 border-red-500 my-8">
+        <p className="font-bold text-red-700 mb-4">ÁREA DE TESTE DO MENU:</p>
+        <FloatingSidebar />
+      </div>
 
-      {/* O resto do seu código atual (header, banners, seções, footer...) */}
+      <SiteFooter />
     </main>
   )
 }
