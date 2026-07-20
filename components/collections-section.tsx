@@ -3,7 +3,6 @@
 import Link from "next/link"
 
 export function CollectionsSection() {
-  // Lista com as 8 categorias e links de imagens 100% funcionais e diretos
   const categories = [
     { name: "Sala De Jantar", image: "https://images.unsplash.com/photo-1617806118233-18e1c0c27942?w=300&q=80", href: "/category/sala-de-jantar" },
     { name: "Presentes Para Ele", image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=300&q=80", href: "/category/presentes-para-ele" },
@@ -16,13 +15,13 @@ export function CollectionsSection() {
   ];
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-8">
+    <section className="max-w-7xl mx-auto px-4 py-8 overflow-hidden">
       <h2 className="text-xl md:text-2xl font-bold text-center mb-6 text-black">
         Compre produtos e presentes criativos no Shapters Marketplace!
       </h2>
 
-      {/* Mantém todas na mesma linha em qualquer tela, permitindo rolar para o lado se faltar espaço */}
-      <div className="flex justify-start md:justify-center items-center gap-6 overflow-x-auto no-scrollbar pb-4 px-2">
+      {/* Força o scroll horizontal fluido e deixa a última bolinha cortada na borda para indicar rolagem */}
+      <div className="flex items-center gap-6 overflow-x-auto no-scrollbar pb-4 px-4 w-full justify-start md:justify-start">
         {categories.map((cat, index) => (
           <Link 
             key={index} 
