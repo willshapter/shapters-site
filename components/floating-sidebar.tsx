@@ -1,12 +1,6 @@
-import Image from "next/image"
 import { collections } from "@/lib/collections"
 
 export function FloatingSidebar() {
-  // Verificação de segurança: se collections não existir ou estiver vazio, não quebra a página
-  if (!collections || !Array.isArray(collections) || collections.length === 0) {
-    return <div className="p-4 text-xs text-red-500">Erro: Nenhuma coleção encontrada em lib/collections.ts</div>
-  }
-
   return (
     <aside
       aria-label="Categorias"
@@ -21,12 +15,10 @@ export function FloatingSidebar() {
             title={item?.title || "Categoria"}
           >
             <div className="relative h-14 w-14 overflow-hidden rounded-full border border-gray-200 transition-transform duration-300 group-hover:scale-110 group-hover:border-[#eb2f4e] group-hover:shadow-md">
-              <Image
+              <img
                 src={item?.image || "/placeholder.svg"}
                 alt={item?.title || "Categoria"}
-                fill
-                sizes="56px"
-                className="object-cover"
+                className="h-full w-full object-cover"
               />
             </div>
             <span className="mt-1 text-[10px] leading-tight text-gray-700 text-pretty transition-colors group-hover:text-[#eb2f4e]">
