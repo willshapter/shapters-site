@@ -1,64 +1,48 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Image from "next/image"
+import { ChevronRight } from "lucide-react"
 import { collections } from "@/lib/collections"
 
 export function FloatingSidebar() {
-  // Only allow the sidebar to be reachable after the top circles scroll away.
-  const [scrolledPast, setScrolledPast] = useState(false)
-  // Controls the slide-in reveal, triggered by hovering the left edge / the sidebar itself.
   const [open, setOpen] = useState(false)
-
-  useEffect(() => {
-    const grid = document.getElementById("collections-grid")
-    if (!grid) return
-
-    // Enable the sidebar only once the category circles have left the viewport.
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setScrolledPast(!entry.isIntersecting)
-      },
-      { rootMargin: "0px", threshold: 0 },
-    )
-
-    observer.observe(grid)
-    return () => observer.disconnect()
-  }, [])
-
-  // The sidebar is only shown when we've scrolled past the circles AND the user
-  // is hovering near the left edge (or over the sidebar itself).
-  const revealed = scrolledPast && open
 
   return (
     <>
-      {/* Invisible 20px hot zone on the left edge that triggers the slide-in. */}
+      {/* Zona invisível e indicador visual (setinha) na borda esquerda */}
       <div
         aria-hidden="true"
         onMouseEnter={() => setOpen(true)}
-        className={[
-          "fixed left-0 top-0 z-30 hidden h-full w-5 sm:block",
-          scrolledPast ? "pointer-events-auto" : "pointer-events-none",
-        ].join(" ")}
-      />
+        className="fixed left-0 top-1/2 z-30 hidden -translate-y-1/2 sm:flex items-center pointer-events-auto"
+      >
+        {/* Setinha chamativa que some quando o menu abre */}
+        <div
+          className={[
+            "flex h-10 w-6 items-center justify-center rounded-r-md bg-white/90 shadow-md ring-1 ring-gray-200 backdrop-blur transition-opacity duration-300",
+            open ? "opacity-0 pointer-events-none" : "opacity-100",
+          ].join(" ")}
+        >
+          <ChevronRight className="h-4 w-4 text-gray-600 animate-pulse" />
+        </div>
+      </div>
 
+      {/* Menu lateral deslizante */}
       <aside
         aria-label="Categorias"
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}
         className={[
           "fixed left-0 top-1/2 z-40 -translate-y-1/2",
-          "hidden sm:block", // hide on very small screens to protect product content
+          "hidden sm:block",
           "transition-all duration-300 ease-out",
-          revealed
+          open
             ? "pointer-events-auto translate-x-0 opacity-100"
             : "pointer-events-none -translate-x-full opacity-0",
         ].join(" ")}
       >
         <nav
-          className={[
-            "flex max-h-[85vh] w-28 flex-col gap-3 overflow-y-auto rounded-r-xl bg-white/95 px-3 py-4 shadow-lg ring-1 ring-gray-200 backdrop-blur",
-          ].join(" ")}
+          className="flex max-h-[85vh] w-28 flex-col gap-3 overflow-y-auto rounded-r-xl bg-white/95 px-3 py-4 shadow-lg ring-1 ring-gray-200 backdrop-blur"
         >
           {collections.map((item) => (
             <a
