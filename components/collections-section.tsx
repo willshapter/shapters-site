@@ -1,11 +1,14 @@
 "use client"
 
 import Link from "next/link"
-import { useRef } from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { useRef, useState } from "react"
+import { ChevronRight } from "lucide-react"
 
 export function CollectionsSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
 
   const categories = [
     { name: "Sala De Jantar", image: "https://images.unsplash.com/photo-1617806118233-18e1c0c27942?w=300&q=80", href: "/category/sala-de-jantar" },
@@ -18,11 +21,34 @@ export function CollectionsSection() {
     { name: "Calçados", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&q=80", href: "/category/calcados" },
   ];
 
-  const scroll = (direction: 'left' | 'right') => {
+  // Funções para permitir clicar e arrastar com o mouse
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!scrollRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - scrollRef.current.offsetLeft);
+    setScrollLeft(scrollRef.current.scrollLeft);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // Velocidade do arrasto
+    scrollRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  // Função para o botão da setinha avançar
+  const scrollRight = () => {
     if (scrollRef.current) {
-      const { scrollLeft, clientWidth } = scrollRef.current;
-      const offset = direction === 'left' ? -clientWidth / 2 : clientWidth / 2;
-      scrollRef.current.scrollTo({ left: scrollLeft + offset, behavior: 'smooth' });
+      scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' });
     }
   };
 
@@ -32,27 +58,24 @@ export function CollectionsSection() {
         Compre produtos e presentes criativos no Shapters Marketplace!
       </h2>
 
-      <div className="relative group">
-        {/* Botão de rolar para a esquerda */}
-        <button 
-          onClick={() => scroll('left')} 
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white text-black p-2 rounded-full shadow-md border border-gray-200 hidden md:flex items-center justify-center -ml-4 transition-all"
-        >
-          <ChevronLeft className="w-5 h-5" />
-        </button>
-
-        {/* Container das bolinhas com rolagem lateral suave */}
+      <div className="relative flex items-center">
+        {/* Container das bolinhas com suporte a clique e arraste */}
         <div 
           ref={scrollRef}
-          className="flex items-center gap-6 overflow-x-auto no-scrollbar pb-4 px-2 scroll-smooth"
+          onMouseDown={handleMouseDown}
+          onMouseLeave={handleMouseLeave}
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
+          className="flex items-center gap-6 overflow-x-auto no-scrollbar pb-4 px-2 scroll-smooth cursor-grab active:cursor-grabbing w-full"
         >
           {categories.map((cat, index) => (
             <Link 
               key={index} 
               href={cat.href}
-              className="flex flex-col items-center flex-shrink-0 group/item text-center w-24 md:w-28"
+              draggable={false}
+              className="flex flex-col items-center flex-shrink-0 group/item text-center w-24 md:w-28 select-none"
             >
-              <div className="w-20 h-20 md:w-28 md:h-28 rounded-full overflow-hidden border-2 border-transparent group-hover/item:border-rose-500 transition-all shadow-sm bg-gray-100">
+              <div className="w-20 h-20 md:w-28 md:h-28 rounded-full overflow-hidden border-2 border-transparent group-hover/item:border-rose-500 transition-all shadow-sm bg-gray-100 pointer-events-none md:pointer-events-auto">
                 <img 
                   src={cat.image} 
                   alt={cat.name} 
@@ -66,12 +89,13 @@ export function CollectionsSection() {
           ))}
         </div>
 
-        {/* Botão de rolar para a direita (indica que há mais conteúdo) */}
+        {/* Botão de setinha lateral indicando que há mais conteúdo */}
         <button 
-          onClick={() => scroll('right')} 
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white text-black p-2 rounded-full shadow-md border border-gray-200 hidden md:flex items-center justify-center -mr-4 transition-all"
+          onClick={scrollRight}
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/95 hover:bg-white text-black p-3 rounded-full shadow-lg border border-gray-200 hidden md:flex items-center justify-center -mr-3 transition-all hover:scale-110"
+          title="Ver mais categorias"
         >
-          <ChevronRight className="w-5 h-5" />
+          <ChevronRight className="w-5 h-5 text-gray-700" />
         </button>
       </div>
     </section>
