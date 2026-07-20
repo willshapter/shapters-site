@@ -23,10 +23,10 @@ export function ShippingBanner() {
         className="flex transition-transform duration-700 ease-in-out" 
         style={{ transform: `translateX(-${currentSlide * 100}%)` }}
       >
-        {slides.map((index) => (
+        {slides.map((slide, index) => (
           <div key={index} className="w-full flex-shrink-0 flex justify-center bg-black">
             <img 
-              src={slides[index].src} 
+              src={slide.src} 
               alt={`Banner ${index + 1}`} 
               className="w-full h-auto object-contain block" 
             />
