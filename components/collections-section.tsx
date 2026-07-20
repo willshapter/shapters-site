@@ -1,46 +1,44 @@
-import Image from "next/image"
-import { ArrowRight } from "lucide-react"
-import { collections } from "@/lib/collections"
+"use client"
+
+import Link from "next/link"
 
 export function CollectionsSection() {
-  return (
-    <section className="w-full bg-white py-10">
-      <div className="mx-auto max-w-7xl px-4">
-        <h2 className="mb-8 text-balance text-2xl font-bold text-gray-900 md:text-3xl">
-          Compre produtos e presentes criativos no Shapters Marketplace!
-        </h2>
+  // Aqui estão as categorias atuais. Depois você me diz quais quer alterar!
+  const categories = [
+    { name: "Sala De Jantar", image: "https://images.unsplash.com/photo-1617806118233-18e1c0c27942?auto=format&fit=crop&w=300&q=80", href: "/category/sala-de-jantar" },
+    { name: "Presentes Para Ele", image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=300&q=80", href: "/category/presentes-para-ele" },
+    { name: "Presentes Para Ela", image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=300&q=80", href: "/category/presentes-para-ela" },
+    { name: "Roupas Femininas", image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=300&q=80", href: "/category/roupas-femininas" },
+    // Adicione mais se precisar
+  ];
 
-        <ul
-          id="collections-grid"
-          className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8"
-        >
-          {collections.map((item) => (
-            <li key={item.title} className="group flex flex-col items-center text-center">
-              <a href={item.href} className="flex flex-col items-center">
-                <div className="relative h-24 w-24 overflow-hidden rounded-full border border-gray-200 transition-transform duration-300 ease-out group-hover:scale-110 group-hover:border-[#eb2f4e] group-hover:shadow-lg md:h-28 md:w-28">
-                  <Image
-                    src={item.image || "/placeholder.svg"}
-                    alt={item.title}
-                    fill
-                    sizes="112px"
-                    className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
-                  />
-                </div>
-                <h3 className="mt-3 text-sm font-medium leading-snug text-gray-800 text-pretty">
-                  {item.title}
-                </h3>
-              </a>
-              <a
-                href={item.href}
-                className="mt-1 inline-flex items-center gap-1 text-xs font-medium text-[#eb2f4e] transition-all group-hover:font-bold group-hover:text-[#cf2444] group-hover:underline"
-              >
-                Compre agora
-                <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
-              </a>
-            </li>
-          ))}
-        </ul>
+  return (
+    <section className="max-w-7xl mx-auto px-4 py-8">
+      <h2 className="text-xl md:text-2xl font-bold text-center mb-6 text-black">
+        Compre produtos e presentes criativos no Shapters Marketplace!
+      </h2>
+
+      {/* Container com scroll horizontal no mobile/tablet e centralizado no desktop */}
+      <div className="flex md:justify-center items-center gap-6 overflow-x-auto no-scrollbar pb-4 px-2">
+        {categories.map((cat, index) => (
+          <Link 
+            key={index} 
+            href={cat.href}
+            className="flex flex-col items-center flex-shrink-0 group text-center w-28"
+          >
+            <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-2 border-transparent group-hover:border-rose-500 transition-all shadow-sm">
+              <img 
+                src={cat.image} 
+                alt={cat.name} 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
+              />
+            </div>
+            <span className="mt-2 text-xs md:text-sm font-medium text-gray-800 group-hover:text-rose-500 transition-colors line-clamp-2">
+              {cat.name}
+            </span>
+          </Link>
+        ))}
       </div>
     </section>
-  )
+  );
 }
