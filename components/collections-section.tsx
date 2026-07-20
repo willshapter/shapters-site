@@ -3,16 +3,16 @@
 import Link from "next/link"
 
 export function CollectionsSection() {
-  // Lista com as 8 categorias completas e corrigidas
+  // Lista com as 8 categorias e links de imagens 100% funcionais e diretos
   const categories = [
-    { name: "Sala De Jantar", image: "https://images.unsplash.com/photo-1617806118233-18e1c0c27942?auto=format&fit=crop&w=300&q=80", href: "/category/sala-de-jantar" },
-    { name: "Presentes Para Ele", image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=300&q=80", href: "/category/presentes-para-ele" },
-    { name: "Presentes Para Ela", image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=300&q=80", href: "/category/presentes-para-ela" },
-    { name: "Roupas Femininas", image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=300&q=80", href: "/category/roupas-femininas" },
-    { name: "Decoração", image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=300&q=80", href: "/category/decoracao" },
-    { name: "Eletrônicos", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=300&q=80", href: "/category/eletronicos" },
-    { name: "Acessórios", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=300&q=80", href: "/category/acessorios" },
-    { name: "Calçados", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=300&q=80", href: "/category/calcados" },
+    { name: "Sala De Jantar", image: "https://images.unsplash.com/photo-1617806118233-18e1c0c27942?w=300&q=80", href: "/category/sala-de-jantar" },
+    { name: "Presentes Para Ele", image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=300&q=80", href: "/category/presentes-para-ele" },
+    { name: "Presentes Para Ela", image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=300&q=80", href: "/category/presentes-para-ela" },
+    { name: "Roupas Femininas", image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=300&q=80", href: "/category/roupas-femininas" },
+    { name: "Decoração", image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=300&q=80", href: "/category/decoracao" },
+    { name: "Eletrônicos", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&q=80", href: "/category/eletronicos" },
+    { name: "Acessórios", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&q=80", href: "/category/acessorios" },
+    { name: "Calçados", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&q=80", href: "/category/calcados" },
   ];
 
   return (
@@ -21,8 +21,8 @@ export function CollectionsSection() {
         Compre produtos e presentes criativos no Shapters Marketplace!
       </h2>
 
-      {/* No celular vira scroll horizontal. No computador (md) organiza em linha ou grade que se ajusta automaticamente */}
-      <div className="flex md:flex-wrap md:justify-center items-center gap-6 overflow-x-auto md:overflow-x-visible no-scrollbar pb-4 px-2">
+      {/* Mantém todas na mesma linha em qualquer tela, permitindo rolar para o lado se faltar espaço */}
+      <div className="flex justify-start md:justify-center items-center gap-6 overflow-x-auto no-scrollbar pb-4 px-2">
         {categories.map((cat, index) => (
           <Link 
             key={index} 
