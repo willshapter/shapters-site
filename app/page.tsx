@@ -1,5 +1,4 @@
 import { SiteHeader } from "@/components/site-header"
-import { HeroBanner } from "@/components/hero-banner" // Seu banner com imagens automáticas passando
 import { CollectionsSection } from "@/components/collections-section" // Bolinhas de categorias
 import { ProductGrid } from "@/components/product-grid"
 import { Footer } from "@/components/site-footer"
@@ -10,9 +9,19 @@ export default function Home() {
       {/* 1. Cabeçalho / Menu */}
       <SiteHeader />
 
-      {/* 2. BANNER PRINCIPAL COM DUAS IMAGENS AUTOMÁTICAS PASSANDO (No topo) */}
+      {/* 2. BANNER PRINCIPAL NO TOPO */}
       <div className="mx-auto max-w-7xl w-full px-4 my-4">
-        <HeroBanner />
+        <div className="relative w-full h-[280px] md:h-[400px] rounded-2xl overflow-hidden shadow-lg bg-[#0b3834] flex items-center justify-center">
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent z-10" />
+          <div className="absolute inset-hidden z-20 text-center md:text-left md:left-12 px-6 max-w-xl text-white space-y-3">
+            <span className="bg-[#eb2f4e] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Nova Coleção</span>
+            <h1 className="text-2xl md:text-4xl font-extrabold tracking-tight">Descubra Inovação e Estilo na Shapters</h1>
+            <p className="text-xs md:text-sm text-gray-200">As melhores tendências selecionadas com exclusividade para você.</p>
+            <button className="bg-[#eb2f4e] hover:bg-opacity-90 text-white font-bold text-xs md:text-sm px-6 py-2.5 rounded-lg shadow-md transition-all">
+              Ver Ofertas
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* 3. Grid de Produtos / Novidades */}
@@ -20,7 +29,7 @@ export default function Home() {
         <ProductGrid />
       </div>
 
-      {/* 4. FAIXA COM DEGRADÊ (Verde e Vermelho) - Colocada abaixo das linhas de produtos e antes das categorias */}
+      {/* 4. FAIXA COM DEGRADÊ (Verde e Vermelho) - Abaixo das linhas de produtos e antes das categorias */}
       <div className="mx-auto max-w-7xl w-full px-4 my-6">
         <div className="w-full bg-gradient-to-r from-[#0b3834] via-[#124e48] to-[#eb2f4e] rounded-xl py-4 px-6 text-white text-center shadow-md">
           <h2 className="text-lg md:text-xl font-bold">Aproveite as Ofertas Exclusivas da Semana!</h2>
