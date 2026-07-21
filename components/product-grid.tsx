@@ -13,7 +13,7 @@ export function ProductGrid() {
   return (
     <section className="mx-auto max-w-7xl px-4 py-12">
       <h2 className="mb-8 text-2xl font-bold text-gray-900 text-center">Produtos em Destaque</h2>
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
         {products.map((product) => (
           <div key={product.id} className="group rounded-xl border border-gray-100 bg-white p-3 shadow-sm transition-all hover:shadow-md">
             <div className="relative aspect-square overflow-hidden rounded-lg bg-gray-100">
@@ -26,5 +26,4 @@ export function ProductGrid() {
       </div>
     </section>
   )
-    }
-  
+}
