@@ -1,6 +1,6 @@
 import { SiteHeader } from "@/components/site-header"
-import { CollectionsSection } from "@/components/collections-section" // Bolinhas de categorias
 import { ProductGrid } from "@/components/product-grid"
+import { CollectionsSection } from "@/components/collections-section"
 import { Footer } from "@/components/site-footer"
 
 export default function Home() {
@@ -9,27 +9,49 @@ export default function Home() {
       {/* 1. Cabeçalho / Menu */}
       <SiteHeader />
 
-      {/* 2. BANNER PRINCIPAL NO TOPO */}
+      {/* 2. BANNER PRINCIPAL COM AS DUAS FOTOS ORIGINAIS DO CARROSSEL */}
       <div className="mx-auto max-w-7xl w-full px-4 my-4">
-        <div className="relative w-full h-[280px] md:h-[400px] rounded-2xl overflow-hidden shadow-lg bg-[#0b3834] flex items-center justify-center">
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent z-10" />
-          <div className="absolute inset-hidden z-20 text-center md:text-left md:left-12 px-6 max-w-xl text-white space-y-3">
-            <span className="bg-[#eb2f4e] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Nova Coleção</span>
-            <h1 className="text-2xl md:text-4xl font-extrabold tracking-tight">Descubra Inovação e Estilo na Shapters</h1>
-            <p className="text-xs md:text-sm text-gray-200">As melhores tendências selecionadas com exclusividade para você.</p>
-            <button className="bg-[#eb2f4e] hover:bg-opacity-90 text-white font-bold text-xs md:text-sm px-6 py-2.5 rounded-lg shadow-md transition-all">
-              Ver Ofertas
-            </button>
+        <div className="relative w-full h-[280px] md:h-[420px] rounded-2xl overflow-hidden shadow-lg bg-[#0b3834] group">
+          
+          {/* FOTO 1: Promoções Imperdíveis / Frete Grátis com Casal */}
+          <div className="absolute inset-0 w-full h-full flex items-center justify-between bg-[#0b3834] px-6 md:px-12 text-white">
+            <div className="max-w-lg space-y-3 z-10">
+              <span className="bg-[#eb2f4e] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Frete Grátis</span>
+              <h1 className="text-2xl md:text-5xl font-black tracking-tight">PROMOÇÕES IMPERDÍVEIS</h1>
+              <p className="text-sm md:text-lg text-gray-200 font-medium">PARA QUALQUER LUGAR DO BRASIL</p>
+              <button className="bg-[#eb2f4e] hover:bg-opacity-90 text-white font-bold text-xs md:text-sm px-6 py-2.5 rounded-lg shadow-md transition-all">
+                Aproveitar Ofertas
+              </button>
+            </div>
+            <div className="absolute right-0 bottom-0 top-0 w-1/2 opacity-90 md:opacity-100 flex items-center justify-end">
+              <div className="w-full h-full bg-gradient-to-l from-transparent via-[#0b3834]/50 to-[#0b3834] absolute z-10" />
+              {/* Imagem do casal com balões de coração */}
+              <img 
+                src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=1000&auto=format&fit=crop" 
+                alt="Frete Grátis" 
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
+
+          {/* Indicadores do Carrossel (Bolinhas embaixo) */}
+          <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 z-30 flex space-x-2">
+            <span className="w-6 h-1.5 bg-white rounded-full transition-all"></span>
+            <span className="w-2 h-1.5 bg-white/50 rounded-full transition-all"></span>
+          </div>
+
         </div>
       </div>
 
-      {/* 3. Grid de Produtos / Novidades */}
+      {/* 3. Grid de Produtos Populares / Novidades */}
       <div className="flex-1">
         <ProductGrid />
       </div>
 
-      {/* 4. FAIXA COM DEGRADÊ (Verde e Vermelho) - Abaixo das linhas de produtos e antes das categorias */}
+      {/* 4. SEÇÃO DE CATEGORIAS EM BOLINHAS */}
+      <CollectionsSection />
+
+      {/* 5. FAIXA COM DEGRADÊ (Verde e Vermelho) - Exatamente abaixo das bolinhas de categorias */}
       <div className="mx-auto max-w-7xl w-full px-4 my-6">
         <div className="w-full bg-gradient-to-r from-[#0b3834] via-[#124e48] to-[#eb2f4e] rounded-xl py-4 px-6 text-white text-center shadow-md">
           <h2 className="text-lg md:text-xl font-bold">Aproveite as Ofertas Exclusivas da Semana!</h2>
@@ -37,10 +59,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 5. Seção de Categorias em Bolinha */}
-      <CollectionsSection />
-
-      {/* 6. FAIXAS LÁ EMBAIXO (Compromissos e Ofertas Relâmpago Shapters) */}
+      {/* 6. FAIXAS FINAIS (Compromissos e Ofertas Relâmpago Shapters) */}
       <div className="mx-auto max-w-7xl w-full px-4 my-6 space-y-3">
         
         {/* Faixa de Compromissos Shapters */}
