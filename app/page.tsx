@@ -1,5 +1,5 @@
 import { SiteHeader } from "@/components/site-header"
-import { HeroBanner } from "@/components/hero-banner"
+import { ShippingBanner } from "@/components/shipping-banner"
 import { ProductGrid } from "@/components/product-grid"
 import { CollectionsSection } from "@/components/collections-section"
 import { Footer } from "@/components/site-footer"
@@ -10,9 +10,9 @@ export default function Home() {
       {/* 1. Cabeçalho */}
       <SiteHeader />
 
-      {/* 2. Seu Banner com as duas fotos automáticas no topo */}
+      {/* 2. Seu Banner com as imagens no topo */}
       <div className="mx-auto max-w-7xl w-full px-4 my-4">
-        <HeroBanner />
+        <ShippingBanner />
       </div>
 
       {/* 3. Produtos / Novidades */}
@@ -23,7 +23,7 @@ export default function Home() {
       {/* 4. Bolinhas de Categorias */}
       <CollectionsSection />
 
-      {/* 5. Faixa de Ofertas Exclusivas (Logo abaixo das bolinhas, como na sexta imagem) */}
+      {/* 5. Faixa de Ofertas Exclusivas (Logo abaixo das bolinhas) */}
       <div className="mx-auto max-w-7xl w-full px-4 my-6">
         <div className="w-full bg-gradient-to-r from-[#0b3834] via-[#124e48] to-[#eb2f4e] rounded-xl py-4 px-6 text-white text-center shadow-md">
           <h2 className="text-lg md:text-xl font-bold">Aproveite as Ofertas Exclusivas da Semana!</h2>
