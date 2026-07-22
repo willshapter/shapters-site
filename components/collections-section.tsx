@@ -11,7 +11,7 @@ export function CollectionsSection() {
   const [scrollLeft, setScrollLeft] = useState(0);
 
   const categories = [
-    { name: "Presentes Para Ele", image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=300&q=80", href: "/category/presentes-para-ele" },
+    { name: "Presentes Para Ele", image: "https://cdn.shopify.com/s/files/1/0781/7573/1852/files/sala_de_jantar.png?v=1784524718"/category/presentes-para-ele" },
     { name: "Presentes Para Ela", image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=300&q=80", href: "/category/presentes-para-ela" },
     { name: "Roupas Femininas", image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=300&q=80", href: "/category/roupas-femininas" },
     { name: "Decoração", image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=300&q=80", href: "/category/decoracao" },
