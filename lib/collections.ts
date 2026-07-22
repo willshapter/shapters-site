@@ -7,7 +7,7 @@ export type Collection = {
 export const collections: Collection[] = [
   { 
     title: "Sala De Jantar", 
-    image: "https://images.unsplash.com/photo-1615529162924-f8605388461d?w=300&auto=format&fit=crop&q=80", 
+    image: "https://cdn.shopify.com/s/files/1/0781/7573/1852/files/sala_de_jantar.png?v=1784524718", 
     href: "#" 
   },
   { 
