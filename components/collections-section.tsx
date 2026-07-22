@@ -11,7 +11,6 @@ export function CollectionsSection() {
   const [scrollLeft, setScrollLeft] = useState(0);
 
   const categories = [
-    { name: "Sala De Jantar", image: "http://googleusercontent.com/image_generation_content/473", href: "/category/sala-de-jantar" },
     { name: "Presentes Para Ele", image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=300&q=80", href: "/category/presentes-para-ele" },
     { name: "Presentes Para Ela", image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=300&q=80", href: "/category/presentes-para-ela" },
     { name: "Roupas Femininas", image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=300&q=80", href: "/category/roupas-femininas" },
@@ -21,7 +20,6 @@ export function CollectionsSection() {
     { name: "Calçados", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&q=80", href: "/category/calcados" },
   ];
 
-  // Funções para permitir clicar e arrastar com o mouse
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!scrollRef.current) return;
     setIsDragging(true);
@@ -41,11 +39,10 @@ export function CollectionsSection() {
     if (!isDragging || !scrollRef.current) return;
     e.preventDefault();
     const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX) * 2; // Velocidade do arrasto
+    const walk = (x - startX) * 2;
     scrollRef.current.scrollLeft = scrollLeft - walk;
   };
 
-  // Função para o botão da setinha avançar
   const scrollRight = () => {
     if (scrollRef.current) {
       scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' });
@@ -53,43 +50,41 @@ export function CollectionsSection() {
   };
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-8 relative">
+    <section className="w-full max-w-7xl mx-auto px-4 py-8 relative overflow-hidden">
       <h2 className="text-xl md:text-2xl font-bold text-center mb-6 text-black">
         Compre produtos e presentes criativos no Shapters Marketplace!
       </h2>
 
-      <div className="relative flex items-center">
-        {/* Container das bolinhas com suporte a clique e arraste */}
+      <div className="relative flex items-center w-full">
         <div 
           ref={scrollRef}
           onMouseDown={handleMouseDown}
           onMouseLeave={handleMouseLeave}
           onMouseUp={handleMouseUp}
           onMouseMove={handleMouseMove}
-          className="flex items-center gap-6 overflow-x-auto no-scrollbar pb-4 px-2 scroll-smooth cursor-grab active:cursor-grabbing w-full"
+          className="flex items-center gap-4 md:gap-6 overflow-x-auto no-scrollbar pb-4 px-1 scroll-smooth cursor-grab active:cursor-grabbing w-full max-w-full"
         >
           {categories.map((cat, index) => (
             <Link 
               key={index} 
               href={cat.href}
               draggable={false}
-              className="flex flex-col items-center flex-shrink-0 group/item text-center w-24 md:w-28 select-none"
+              className="flex flex-col items-center flex-shrink-0 group/item text-center w-20 md:w-28 select-none"
             >
-              <div className="w-20 h-20 md:w-28 md:h-28 rounded-full overflow-hidden border-2 border-transparent group-hover/item:border-rose-500 transition-all shadow-sm bg-gray-100 pointer-events-none md:pointer-events-auto">
+              <div className="w-18 h-18 md:w-28 md:h-28 rounded-full overflow-hidden border-2 border-transparent group-hover/item:border-rose-500 transition-all shadow-sm bg-gray-100 flex-shrink-0">
                 <img 
                   src={cat.image} 
                   alt={cat.name} 
-                  className="w-full h-full object-cover group-hover/item:scale-105 transition-transform duration-300" 
+                  className="w-full h-full object-cover group-hover/item:scale-105 transition-transform duration-300 pointer-events-none" 
                 />
               </div>
-              <span className="mt-2 text-xs md:text-sm font-medium text-gray-800 group-hover/item:text-rose-500 transition-colors line-clamp-2">
+              <span className="mt-2 text-xs md:text-sm font-medium text-gray-800 group-hover/item:text-rose-500 transition-colors line-clamp-2 w-full">
                 {cat.name}
               </span>
             </Link>
           ))}
         </div>
 
-        {/* Botão de setinha lateral indicando que há mais conteúdo */}
         <button 
           onClick={scrollRight}
           className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/95 hover:bg-white text-black p-3 rounded-full shadow-lg border border-gray-200 hidden md:flex items-center justify-center -mr-3 transition-all hover:scale-110"
