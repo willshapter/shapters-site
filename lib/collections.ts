@@ -5,12 +5,10 @@ export type Collection = {
 }
 
 export const collections: Collection[] = [
-  { 
-    { 
-    title: "Sala De Jantar", 
-    image: "https://images.unsplash.com/photo-1617806118233-18e1c0c8f2d5?q=80&w=500&auto=format&fit=crop", 
-    href: "#" 
-  },
+  {
+    title: "Sala De Jantar",
+    image: "https://images.unsplash.com/photo-1617806118233-18e1c0c8f2d5?q=80&w=500&auto=format&fit=crop",
+    href: "#"
   },
   { 
     title: "Presentes Para Ele", 
